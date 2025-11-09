@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 
+import { Link } from 'react-router-dom';
+
 function Navbar() {
     const[open,setOpen]=useState(false)
   return (
-    <>
+    <div className="fixed top-[48px] left-0 w-full  bg-black text-zinc-200 p-4 z-40">
       <div className="flex items-center justify-between bg-black text-zinc-200 p-4">
         {/* logo */}
         <div id="logo" className="flex items-center gap-4 ">
@@ -26,13 +28,17 @@ function Navbar() {
                   key={idx}
                   className="relative list-none font-mono sm:text-sm text-md cursor-pointer group"
                 >
-                  <span className="relative">
-                    {item}
-                    <span
-                      className="absolute left-0 -bottom-1 h-[2px] w-0 bg-green-500 
-                    transition-all duration-300 group-hover:w-full"
-                    ></span>
-                  </span>
+                  <a
+                    href={item === "Home" ? "#home" : `#${item.toLowerCase()}`}
+                  >
+                    <span className="relative">
+                      {item}
+                      <span
+                        className="absolute left-0 -bottom-1 h-[2px] w-0 bg-green-500 
+        transition-all duration-300 group-hover:w-full"
+                      ></span>
+                    </span>
+                  </a>
                 </li>
               )
             )}
@@ -72,9 +78,15 @@ function Navbar() {
           {["Home", "About", "Team", "Service", "Contact"].map((item, idx) => (
             <li
               key={idx}
-              className="cursor-pointer items-center hover:text-green-400 transition"
+              className="cursor-pointer hover:text-green-400 transition"
+              onClick={() => setOpen(false)}
             >
-              {item}
+              <a
+                href={item === "Home" ? "#home" : `#${item.toLowerCase()}`}
+                className="block"
+              >
+                {item}
+              </a>
             </li>
           ))}
         </ul>
@@ -87,7 +99,7 @@ function Navbar() {
           Book Your Appointment
         </button>
       </div>
-    </>
+    </div>
   );
 }
 
