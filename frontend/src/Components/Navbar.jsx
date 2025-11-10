@@ -8,10 +8,10 @@ function Navbar() {
     const[open,setOpen]=useState(false)
   return (
     <div className="fixed top-[48px] left-0 w-full  bg-black text-zinc-200 p-4 z-40">
-      <div className="flex items-center justify-between bg-black text-zinc-200 p-4">
+      <div className="flex items-center justify-between bg-black text-zinc-200 p-4 mt-6 md:mt-0">
         {/* logo */}
         <div id="logo" className="flex items-center gap-4 ">
-          <div className="p-4 bg-green-700 rounded-md text-white font-semibold hover:bg-green-500">
+          <div className=" p-3 md:p-4 bg-green-700 rounded-md text-white font-semibold hover:bg-green-500">
             RC
           </div>
           <p className="text-zinc-200 font-normal font-serif">
@@ -54,14 +54,17 @@ function Navbar() {
         </div>
 
         {/* Hamburger Icon */}
-        <div className="md:hidden cursor-pointer" onClick={() => setOpen(true)}>
+        <div
+          className="fixed top-28 right-5 md:hidden cursor-pointer"
+          onClick={() => setOpen(true)}
+        >
           <RxHamburgerMenu size={28} />
         </div>
       </div>
 
       {/* Sliding Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-black text-white shadow-2xl
+        className={`fixed top-20 right-0 h-full w-64 bg-black text-white shadow-2xl
           p-6 transform transition-transform duration-300 
           ${open ? "translate-x-0" : "translate-x-full"}`}
       >
