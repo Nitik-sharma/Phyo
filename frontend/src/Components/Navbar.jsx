@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 
-import { Link } from 'react-router-dom';
+
 
 function Navbar() {
     const[open,setOpen]=useState(false)

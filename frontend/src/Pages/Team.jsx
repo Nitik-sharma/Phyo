@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaUserMd } from "react-icons/fa";
+
 import profile from '../images/Profile.jpeg'
 function Team() {
   const doctors = [
