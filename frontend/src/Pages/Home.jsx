@@ -6,6 +6,7 @@ import { HiOutlineHeart } from "react-icons/hi";
 import { CiUser } from "react-icons/ci";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -39,7 +40,8 @@ function Home() {
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            Book Your Assessment <HiArrowLongRight />
+            <Link to={"/appointment-form"}>Book Your Assessment</Link>{" "}
+            <HiArrowLongRight />
           </motion.button>
 
           <motion.button

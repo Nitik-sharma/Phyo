@@ -10,6 +10,7 @@ import Contact from "./Pages/Contact";
 import Service from "./Pages/Service";
 import Footer from "./Components/Footer";
 
+
 function App() {
   return (
     <div>
@@ -24,7 +25,8 @@ function App() {
         <Contact />
 
       </div>
-      <Footer/>
+      <Footer />
+      
     </div>
   );
 }

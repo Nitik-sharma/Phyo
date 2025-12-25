@@ -2,10 +2,14 @@ import React, { useState } from 'react'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 
+import Modal from '../Pages/Modal';
+import AppointmentForm from '../Pages/AppointmentForm';
 
 
 function Navbar() {
-    const[open,setOpen]=useState(false)
+  const [open, setOpen] = useState(false)
+  
+  const [formOpen, setFormOpen] = useState(false);
   return (
     <div className="fixed top-[48px] left-0 w-full  bg-black text-zinc-200 p-4 z-40">
       <div className="flex items-center justify-between bg-black text-zinc-200 p-4 mt-6 md:mt-0">
@@ -45,6 +49,7 @@ function Navbar() {
           </ul>
 
           <button
+            onClick={() => setFormOpen(true)}
             className="bg-blue-600 text-white px-6 py-3 rounded-xl 
             hover:bg-blue-700 active:scale-95 transition-all duration-300 
             shadow-md hover:shadow-lg font-semibold"
@@ -95,13 +100,18 @@ function Navbar() {
         </ul>
 
         <button
+          onClick={() => setFormOpen(true)}
           className="mt-8 bg-blue-600 text-white px-6 py-3 rounded-xl 
           hover:bg-blue-700 active:scale-95 transition-all duration-300 
           shadow-md w-full font-semibold"
         >
-          Book Your Appointment
+          Book Your Assessment
         </button>
       </div>
+
+      <Modal open={formOpen} onClose={() => setFormOpen(false)}>
+        <AppointmentForm />
+      </Modal>
     </div>
   );
 }
