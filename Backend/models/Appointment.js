@@ -24,7 +24,11 @@ const appointmentSchema = new mongoose.Schema({
         type: Boolean,
        default:false 
     },
-
+  approveToken: {
+    type: String,
+    required: true,
+    unique:true
+   },
 
   
 
