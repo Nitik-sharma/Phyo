@@ -60,7 +60,37 @@ const AppointmentForm = () => {
   };
 
 
-  const timeSlots = ["09:00-09:30", "10:00-10:30", "11:00-11:30"];
+  const ALL_SLOTS = [
+    "09:00-09:30",
+    "10:00-10:30",
+    "11:00-11:30",
+    "12:00-12:30",
+    "13:00-13:30",
+  ];
+
+  const getAvailabeSlots = () => {
+    if (!form.date) return [];
+
+    const today = new Date().toISOString().split("T")[0];
+
+    if (form.date != today) {
+      return ALL_SLOTS
+    }
+
+    const now = new Date()
+    
+    // current time + 1 hour
+
+    const bufferminutes = (now.getHours() + 1) * 60 + now.getMinutes();
+
+    return ALL_SLOTS.filter((slot) => {
+      const startTime = slot.split("-")[0]
+      const [hour, minute] = startTime.split(":").map(Number);
+      const slotMinute = hour * 60 + minute;
+
+      return slotMinute>=bufferminutes
+   })
+  }
 
   return (
     <div className="bg-gray-700 flex justify-center items-center min-h-screen p-4">
@@ -156,12 +186,18 @@ const AppointmentForm = () => {
             name="date"
             value={form.date}
             onChange={handleChange}
+            min={new Date().toISOString().split("T")[0]}
             required
             className="border border-gray-300 rounded-lg p-2 w-full md:w-1/2 text-gray-900"
           />
 
           <div className="flex flex-wrap gap-3 mt-3">
-            {timeSlots.map((time) => (
+            {getAvailabeSlots().length === 0 && form.date && (
+              <p className="text-red-600 font-medium mt-3">
+                No slots available for today. Please select another date.
+              </p>
+            )}
+            {getAvailabeSlots().map((time) => (
               <button
                 key={time}
                 type="button"
@@ -197,7 +233,7 @@ const AppointmentForm = () => {
         <div className="text-center">
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || !form.slot}
             className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-lg"
           >
             {loading ? "Submitting..." : "Submit Form"}

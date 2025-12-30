@@ -1,8 +1,51 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
 import { FaPhoneAlt, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 
 function Contact() {
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    phoneNo: "",
+    message:""
+  })
+
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+    console.log("first")
+    console.log(data)
+
+    try {
+      const res = await axios.post("http://localhost:5000/api/contact", {
+        name: data.name,
+        email: data.email,
+        phoneNo: data.phoneNo,
+        message:data.message
+      });
+
+      alert("Message sent successfully ✅");
+
+      // reset data form
+      setData({
+        name: "",
+        email: "",
+        phoneNo: "",
+        message:""
+      })
+    } catch (error) {
+      console.log(error)
+      alert("Server is not working try after sometime ")
+    }
+  }
+
+  const handleChange = (e) => {
+    // console.log(e.target)
+    const { name, value } = e.target
+    setData({ ...data, [name]: value })
+    
+    
+  }
   return (
     <div id="contact">
       <div className="bg-neutral-900 text-neutral-200 py-16 px-4">
@@ -90,37 +133,45 @@ function Contact() {
             <div className="bg-neutral-800 border border-neutral-700 p-8 rounded-xl">
               <h3 className="text-xl font-semibold mb-5">Send us a message</h3>
 
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 {/* Full Name + Email */}
                 <div className="grid sm:grid-cols-2 gap-4">
                   <input
                     type="text"
+                    name="name"
                     placeholder="Full Name"
                     className="p-3 bg-neutral-900 border border-neutral-700 rounded-md outline-none focus:border-green-500"
+                    onChange={handleChange}
                   />
                   <input
                     type="email"
+                    name="email"
                     placeholder="Email"
                     className="p-3 bg-neutral-900 border border-neutral-700 rounded-md outline-none focus:border-green-500"
+                    onChange={handleChange}
                   />
                 </div>
 
                 {/* Phone */}
                 <input
                   type="text"
+                  name="phoneNo"
                   placeholder="Phone Number"
                   className="w-full p-3 bg-neutral-900 border border-neutral-700 rounded-md outline-none focus:border-green-500"
+                  onChange={handleChange}
                 />
 
                 {/* Message */}
                 <textarea
                   rows="4"
+                  name="message"
                   placeholder="Tell us about your condition or questions..."
                   className="w-full p-3 bg-neutral-900 border border-neutral-700 rounded-md outline-none focus:border-green-500"
+                  onChange={handleChange}
                 ></textarea>
 
                 {/* Send Button */}
-                <button className="w-full bg-green-600 hover:bg-green-500 py-3 rounded-md text-white font-medium transition">
+                <button className="w-full bg-green-600 hover:bg-green-500 py-3 rounded-md text-white font-medium transition" type='submit'>
                   Send Message
                 </button>
 

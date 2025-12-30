@@ -7,6 +7,17 @@ const sendMail = require("../service/email");
 // ================= BOOK APPOINTMENT =================
 route.post("/book", async (req, res) => {
   try {
+
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    const selectedDate = new Date(date)
+    
+    if (selectedDate < today) {
+      return res.status(400).json({
+        message:"Post date appointment is not allowed "
+      })
+    }
+    
     const { patientName, patientEmail, patientPhone, date, slot, notes } = req.body;
 
     if (!patientName || !patientEmail || !patientPhone || !slot || !date) {

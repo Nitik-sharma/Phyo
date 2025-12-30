@@ -3,7 +3,8 @@ const express = require("express")
 const cors = require("cors")
 const parse = require("body-parser")
 const connectDB = require("./config/db")
-const sendMail=require("./service/email")
+const sendMail = require("./service/email")
+const Contactus=require("./routes/Contact")
 
 const appointment=require("./routes/appointmentsRoute")
 const app = express()
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/api/appointments", appointment)
+app.use("/api",Contactus)
 app.get("/test-email", async (req, res) => {
     try {
         await sendMail(process.env.DOCTOR_EMAIL, "TestEmail", "<p>Hello from backend</p>")
@@ -28,6 +30,8 @@ app.get("/test-email", async (req, res) => {
         res.status(500).json({message:error.message})
     }
 })
+
+
 
 
 PORT = process.env.PORT || 5001
