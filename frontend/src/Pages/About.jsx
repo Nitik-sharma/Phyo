@@ -97,12 +97,12 @@ function About() {
             {/* Stats */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="bg-green-600 text-neutral-100 p-5 rounded-xl text-center font-semibold">
-                <p className="text-3xl">15+</p>
+                <p className="text-3xl">4+</p>
                 <p>Years of Excellence</p>
               </div>
 
               <div className="bg-blue-600 text-neutral-100 p-5 rounded-xl text-center font-semibold">
-                <p className="text-3xl">2000+</p>
+                <p className="text-3xl">200+</p>
                 <p>Successful Treatments</p>
               </div>
             </div>

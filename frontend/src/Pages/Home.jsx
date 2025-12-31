@@ -92,7 +92,7 @@ function Home() {
             whileHover={{ scale: 1.05 }}
           >
             <MdAdminPanelSettings className="text-blue-800" size={36} />
-            <h1 className="font-bold text-xl m-2">15+</h1>
+            <h1 className="font-bold text-xl m-2">4+</h1>
             <p className="text-center font-light text-gray-400">Experience</p>
           </motion.div>
 

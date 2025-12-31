@@ -75,9 +75,14 @@ function Contact() {
                 <div className="bg-neutral-800 border border-neutral-700 p-5 rounded-xl">
                   <div className="flex items-center gap-3 mb-2">
                     <FaPhoneAlt className="text-green-500 text-lg" />
-                    <p className="font-semibold">Phone</p>
+                    <a
+                      href="tel:9034107746"
+                      className=" font-semibold  hover:underline"
+                    >
+                      Phone us{" "}
+                    </a>
                   </div>
-                  <p className="text-sm text-neutral-300">(345) 124-4567</p>
+                  <p className="text-sm text-neutral-300">9034107746 </p>
                   <p className="text-xs text-neutral-500">
                     Call us for appointments
                   </p>
@@ -87,10 +92,15 @@ function Contact() {
                 <div className="bg-neutral-800 border border-neutral-700 p-5 rounded-xl">
                   <div className="flex items-center gap-3 mb-2">
                     <HiOutlineMail className="text-green-500 text-lg" />
-                    <p className="font-semibold">Email</p>
+                    <a
+                      href="mailto:prehabcare@gmail.com"
+                      className=" font-semibold hover:underline text-red-50"
+                    >
+                      Email
+                    </a>
                   </div>
                   <p className="text-sm text-neutral-300">
-                    info@physioclinic.com
+                    prehabcare@gmail.com
                   </p>
                   <p className="text-xs text-neutral-500">
                     Send us your queries
@@ -123,9 +133,15 @@ function Contact() {
                 <p className="text-neutral-200 font-semibold text-lg">
                   Interactive Map
                 </p>
-                <p className="text-neutral-400 text-sm mt-2">
-                  Located in the heart of the city with easy access and parking
-                </p>
+                <iframe
+                  title="clinic-location"
+                  src="https://www.google.com/maps?q=18,+Yadav+Market,+Dhanwapur+Rd,+Laxman+Vihar,+Gurgaon&output=embed"
+                  width="100%"
+                  height="300"
+                  className="rounded-xl border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </div>
 
@@ -171,7 +187,10 @@ function Contact() {
                 ></textarea>
 
                 {/* Send Button */}
-                <button className="w-full bg-green-600 hover:bg-green-500 py-3 rounded-md text-white font-medium transition" type='submit'>
+                <button
+                  className="w-full bg-green-600 hover:bg-green-500 py-3 rounded-md text-white font-medium transition"
+                  type="submit"
+                >
                   Send Message
                 </button>
 

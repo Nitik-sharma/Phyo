@@ -7,30 +7,16 @@ function Team() {
       name: "Dr. Pankaj ",
       role: "Clinic Director & Senior Physiotherapist",
       specialty: "Specialization: Orthopedic Physiotherapy, Sports Rehab",
-      experience: "Experience: 12+ Years",
-      image: `${profile}`
+      experience: "Experience: 4+ Years",
+      image: `${profile}`,
     },
     {
       name: "Dr.Nisha",
       role: "Senior Physiotherapist",
-      specialty: "Specialization: Neuro Physiotherapy",
-      experience: "Experience: 10+ Years",
-      image: `${profile}`
+      specialty: "Specialization: Orthopedic Physiotherapy, Sports Rehab",
+      experience: "Experience: 4+ Years",
+      image: `${profile}`,
     },
-    {
-      name: "Emma Williams",
-      role: "Physiotherapist",
-      specialty: "Specialization: Women’s Health Physiotherapy, Manual Therapy",
-      experience: "Experience: 7+ Years",
-      image: `${profile}`
-    },
-    {
-      name: "David Rodriguez",
-      role: "Sports Physiotherapist",
-      specialty: "Specialization: Sports Physiotherapy, Performance Training",
-      experience: "Experience: 9+ Years",
-      image: `${profile}`
-    }
   ];
 
   return (
@@ -53,7 +39,7 @@ function Team() {
         </p>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
           {doctors.map((doc, index) => (
             <div
               key={index}
@@ -74,9 +60,7 @@ function Team() {
                   <p>{doc.experience}</p>
                 </div>
 
-                <button className="mt-4 w-full py-2 border border-green-600 text-green-500 rounded-md hover:bg-green-600 hover:text-white transition text-sm">
-                  Book Appointment
-                </button>
+                
               </div>
             </div>
           ))}
