@@ -10,111 +10,85 @@ import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <div
+    <section
       id="home"
-      className="flex items-center justify-between px-10 py-10 flex-col md:flex-row bg-gradient-to-r from-[#004e36] via-black to-[#1e3a8a] text-white"
+      className="flex items-center justify-between px-10 py-10 flex-col md:flex-row 
+      bg-gradient-to-r from-[#004e36] via-black to-[#1e3a8a] text-white"
+      aria-label="RehabCare Physiotherapy Clinic Home"
     >
-      {/* LEFT SIDE */}
+      {/* LEFT CONTENT */}
       <motion.div
-        id="text"
         className="mt-6 md:w-1/2 pr-6"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
+        {/* ✅ ONE & ONLY H1 */}
         <h1 className="font-bold text-2xl md:text-5xl p-5 md:p-7 font-serif">
-          Your Journey to <span className="text-green-600">Recovery</span>{" "}
-          Starts Here
+          RehabCare Physiotherapy Clinic – Your Journey to{" "}
+          <span className="text-green-600">Recovery</span> Starts Here
         </h1>
 
         <p className="text-xl p-4 md:text-2xl font-light font-mono md:p-6 text-gray-300">
-          Experience personalized physiotherapy care with our expert team. We're
-          dedicated to helping you achieve optimal health and mobility.
+          Experience personalized physiotherapy and rehabilitation care from
+          certified professionals focused on pain relief, mobility improvement,
+          and long-term recovery.
         </p>
 
-        {/* BUTTONS */}
+        {/* CTA BUTTONS */}
         <div className="flex gap-4 p-5 mt-4 md:p-6">
           <motion.button
             className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            aria-label="Book physiotherapy appointment at RehabCare Clinic"
           >
-            <Link to={"/appointment-form"}>Book Your Assessment</Link>{" "}
+            <Link to="/appointment-form">Book Physiotherapy Assessment</Link>
             <HiArrowLongRight />
           </motion.button>
 
           <motion.button
-            className="px-4 py-2 rounded bg-gray-900 text-blue-700 shadow-lg"
+            className="px-4 py-2 rounded bg-gray-900 text-blue-400 shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            aria-label="Learn more about RehabCare Physiotherapy Clinic"
           >
             Learn More
           </motion.button>
         </div>
 
-        {/* STATS SECTION */}
+        {/* STATS (NO H1 HERE ❌) */}
         <motion.div
           className="flex gap-2 items-center mt-5 md:mt-6"
           initial="hidden"
           animate="show"
           variants={{
             hidden: { opacity: 0 },
-            show: {
-              opacity: 1,
-              transition: { staggerChildren: 0.2 },
-            },
+            show: { opacity: 1, transition: { staggerChildren: 0.2 } },
           }}
         >
-          {/* FIRST CARD */}
-          <motion.div
-            className="bg-gray-950 p-4 md:p-5 flex flex-col items-center rounded-md shadow-md"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              show: { opacity: 1, y: 0 },
-            }}
-            whileHover={{ scale: 1.05 }}
-          >
+          <article className="bg-gray-950 p-4 md:p-5 flex flex-col items-center rounded-md shadow-md">
             <HiOutlineHeart className="text-green-700" size={36} />
-            <h1 className="font-bold text-xl m-2">500+</h1>
-            <p className="text-center font-light text-gray-400">
-              Happy Patients
-            </p>
-          </motion.div>
+            <h3 className="font-bold text-xl m-2">500+</h3>
+            <p className="text-center text-gray-400">Patients Treated</p>
+          </article>
 
-          {/* SECOND CARD */}
-          <motion.div
-            className="bg-gray-950 p-4 md:p-5 flex flex-col items-center rounded-md shadow-md"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              show: { opacity: 1, y: 0 },
-            }}
-            whileHover={{ scale: 1.05 }}
-          >
+          <article className="bg-gray-950 p-4 md:p-5 flex flex-col items-center rounded-md shadow-md">
             <MdAdminPanelSettings className="text-blue-800" size={36} />
-            <h1 className="font-bold text-xl m-2">4+</h1>
-            <p className="text-center font-light text-gray-400">Experience</p>
-          </motion.div>
+            <h3 className="font-bold text-xl m-2">4+ Years</h3>
+            <p className="text-center text-gray-400">Clinical Experience</p>
+          </article>
 
-          {/* THIRD CARD */}
-          <motion.div
-            className="bg-gray-950 p-4 md:p-5 flex flex-col items-center rounded-md shadow-md"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              show: { opacity: 1, y: 0 },
-            }}
-            whileHover={{ scale: 1.05 }}
-          >
+          <article className="bg-gray-950 p-4 md:p-5 flex flex-col items-center rounded-md shadow-md">
             <CiUser className="text-green-700" size={36} />
-            <h1 className="font-bold text-xl m-2">90%</h1>
-            <p className="text-center font-light text-gray-400">Success Rate</p>
-          </motion.div>
+            <h3 className="font-bold text-xl m-2">High</h3>
+            <p className="text-center text-gray-400">Patient Satisfaction</p>
+          </article>
         </motion.div>
       </motion.div>
 
-      {/* RIGHT SIDE IMAGES */}
+      {/* RIGHT IMAGES */}
       <motion.div
-        id="image"
         className="md:w-1/2 flex flex-col justify-center"
         initial={{ opacity: 0, x: 60 }}
         animate={{ opacity: 1, x: 0 }}
@@ -122,21 +96,19 @@ function Home() {
       >
         <motion.img
           src={therapy}
-          alt="therapy"
+          alt="Physiotherapist providing rehabilitation treatment to patient"
           className="w-full mt-4 rounded-md shadow-md"
-          whileHover={{ scale: 1.03 }}
-          transition={{ duration: 0.4 }}
+          loading="lazy"
         />
 
         <motion.img
           src={therapy1}
-          alt=""
+          alt="Modern physiotherapy clinic treatment session"
           className="w-full mt-4 rounded-md shadow-md"
-          whileHover={{ scale: 1.03 }}
-          transition={{ duration: 0.4 }}
+          loading="lazy"
         />
       </motion.div>
-    </div>
+    </section>
   );
 }
 

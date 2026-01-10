@@ -52,13 +52,11 @@ const AppointmentForm = () => {
         comments: "",
       });
     } catch (err) {
-      console.error("Submit error:", err);
-      setMsg(err.response?.data?.message || "Server error");
+      setMsg(err.response?.data?.message || "Server error. Please try again.");
     } finally {
       setLoading(false);
     }
   };
-
 
   const ALL_SLOTS = [
     "09:00-09:30",
@@ -68,117 +66,118 @@ const AppointmentForm = () => {
     "13:00-13:30",
   ];
 
-  const getAvailabeSlots = () => {
+  const getAvailableSlots = () => {
     if (!form.date) return [];
 
     const today = new Date().toISOString().split("T")[0];
+    if (form.date !== today) return ALL_SLOTS;
 
-    if (form.date != today) {
-      return ALL_SLOTS
-    }
-
-    const now = new Date()
-    
-    // current time + 1 hour
-
-    const bufferminutes = (now.getHours() + 1) * 60 + now.getMinutes();
+    const now = new Date();
+    const bufferMinutes = (now.getHours() + 1) * 60 + now.getMinutes();
 
     return ALL_SLOTS.filter((slot) => {
-      const startTime = slot.split("-")[0]
-      const [hour, minute] = startTime.split(":").map(Number);
-      const slotMinute = hour * 60 + minute;
-
-      return slotMinute>=bufferminutes
-   })
-  }
+      const [hour, minute] = slot.split("-")[0].split(":").map(Number);
+      return hour * 60 + minute >= bufferMinutes;
+    });
+  };
 
   return (
-    <div className="bg-gray-700 flex justify-center items-center min-h-screen p-4">
+    <section
+      className="bg-gray-700 flex justify-center items-center min-h-screen p-4"
+      aria-label="Physiotherapy appointment booking form"
+    >
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-xl rounded-2xl p-6 md:p-10 w-full max-w-3xl space-y-6"
+        aria-describedby="form-status"
       >
-        <h1 className="text-2xl md:text-3xl font-bold text-center text-gray-800 border-b pb-3">
-          Request an Appointment
-        </h1>
+        {/* H2 (NOT H1) */}
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 border-b pb-3">
+          Request a Physiotherapy Appointment
+        </h2>
 
-        {/* Show success/error message */}
+        {/* Status Message */}
         {msg && (
-          <p className="text-center text-green-700 font-semibold bg-green-100 p-2 rounded">
+          <p
+            id="form-status"
+            className="text-center text-green-700 font-semibold bg-green-100 p-2 rounded"
+            role="status"
+          >
             {msg}
           </p>
         )}
 
-        {/* Name Fields */}
+        {/* Name */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">
+            <label htmlFor="firstName" className="block text-sm font-semibold">
               First Name
             </label>
             <input
+              id="firstName"
               type="text"
               name="firstName"
               value={form.firstName}
               onChange={handleChange}
-              placeholder="John"
               required
-              className="w-full border border-gray-300 rounded-lg p-2 text-gray-900"
+              className="w-full border rounded-lg p-2"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">
+            <label htmlFor="lastName" className="block text-sm font-semibold">
               Last Name
             </label>
             <input
+              id="lastName"
               type="text"
               name="lastName"
               value={form.lastName}
               onChange={handleChange}
-              placeholder="Doe"
               required
-              className="w-full border border-gray-300 rounded-lg p-2 text-gray-900"
+              className="w-full border rounded-lg p-2"
             />
           </div>
         </div>
 
-        {/* Contact Info */}
+        {/* Contact */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">
+            <label htmlFor="phone" className="block text-sm font-semibold">
               Phone Number
             </label>
             <input
+              id="phone"
               type="tel"
               name="phone"
               value={form.phone}
               onChange={handleChange}
-              maxLength={10}
               required
-              placeholder="(000) 000-0000"
-              className="w-full border border-gray-300 rounded-lg p-2 text-gray-900"
+              pattern="[0-9]{10}"
+              placeholder="10-digit number"
+              className="w-full border rounded-lg p-2"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">
-              E-mail
+            <label htmlFor="email" className="block text-sm font-semibold">
+              Email Address
             </label>
             <input
+              id="email"
               type="email"
               name="email"
               value={form.email}
               onChange={handleChange}
               required
-              placeholder="myname@example.com"
-              className="w-full border border-gray-300 rounded-lg p-2 text-gray-900"
+              className="w-full border rounded-lg p-2"
             />
           </div>
         </div>
 
-        {/* Appointment Date */}
+        {/* Date & Slots */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
+          <label className="block text-sm font-semibold mb-2">
             Select Appointment Date
           </label>
           <input
@@ -188,21 +187,27 @@ const AppointmentForm = () => {
             onChange={handleChange}
             min={new Date().toISOString().split("T")[0]}
             required
-            className="border border-gray-300 rounded-lg p-2 w-full md:w-1/2 text-gray-900"
+            className="border rounded-lg p-2 w-full md:w-1/2"
           />
 
-          <div className="flex flex-wrap gap-3 mt-3">
-            {getAvailabeSlots().length === 0 && form.date && (
-              <p className="text-red-600 font-medium mt-3">
-                No slots available for today. Please select another date.
+          <div
+            className="flex flex-wrap gap-3 mt-3"
+            role="group"
+            aria-label="Available time slots"
+          >
+            {getAvailableSlots().length === 0 && form.date && (
+              <p className="text-red-600 font-medium">
+                No slots available. Please select another date.
               </p>
             )}
-            {getAvailabeSlots().map((time) => (
+
+            {getAvailableSlots().map((time) => (
               <button
                 key={time}
                 type="button"
+                aria-pressed={form.slot === time}
                 onClick={() => setForm({ ...form, slot: time })}
-                className={`px-4 py-2 border rounded-lg transition ${
+                className={`px-4 py-2 border rounded-lg ${
                   form.slot === time
                     ? "bg-green-600 text-white"
                     : "border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
@@ -216,31 +221,37 @@ const AppointmentForm = () => {
 
         {/* Comments */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">
-            Comments
+          <label htmlFor="comments" className="block text-sm font-semibold">
+            Comments (Optional)
           </label>
           <textarea
+            id="comments"
             name="comments"
             rows="4"
             value={form.comments}
             onChange={handleChange}
-            placeholder="Your message here..."
-            className="w-full border border-gray-300 rounded-lg p-2 text-gray-900"
+            className="w-full border rounded-lg p-2"
           />
         </div>
 
-        {/* Submit Button */}
+        {/* Submit */}
         <div className="text-center">
           <button
             type="submit"
             disabled={loading || !form.slot}
             className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-lg"
           >
-            {loading ? "Submitting..." : "Submit Form"}
+            {loading ? "Submitting..." : "Book Appointment"}
           </button>
         </div>
+
+        {/* Medical Disclaimer */}
+        <p className="text-xs text-gray-500 text-center">
+          Submitting this form does not confirm an appointment. Our clinic team
+          will contact you to confirm availability.
+        </p>
       </form>
-    </div>
+    </section>
   );
 };
 

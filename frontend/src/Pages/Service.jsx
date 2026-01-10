@@ -1,145 +1,176 @@
-import React from 'react'
-import { FaHandHoldingMedical } from "react-icons/fa";
+import React from "react";
+import { FaHandHoldingMedical, FaRunning, FaUsers } from "react-icons/fa";
 import { GiStrong } from "react-icons/gi";
 import { TbDeviceHeartMonitor } from "react-icons/tb";
-import { FaRunning } from "react-icons/fa";
-import { FaUsers } from "react-icons/fa";
 import { MdOutlineHealthAndSafety } from "react-icons/md";
 
 function Service() {
   return (
-    <div id="service" className=" bg-zinc-950 text-white">
-      <div className=" flex items-center flex-col ">
-        {/* Our service logo  */}
-        <div className="  border border-green-700 rounded-md mt-6 mb-2">
-          <h1 className=" p-1 text-xs font-mono text-green-700">Our service</h1>
+    <section
+      id="service"
+      className="bg-zinc-950 text-white"
+      aria-label="Physiotherapy services offered by RehabCare Clinic"
+    >
+      {/* SECTION HEADER */}
+      <div className="flex items-center flex-col text-center px-4">
+        <div className="border border-green-700 rounded-md mt-6 mb-2">
+          <span className="p-1 text-xs font-mono text-green-700">
+            Our Services
+          </span>
         </div>
-        {/* Line tag */}
-        <h1 className="text-2xl md:text-3xl font-sans">
+
+        {/* ✅ H2 (NOT H1) */}
+        <h2 className="text-2xl md:text-3xl font-sans">
           Comprehensive{" "}
-          <span className=" text-blue-500 ">Healthcare Solutions</span>
-        </h1>
-        {/* paragra[h] */}
-        <p className=" text-gray-500 p-2 ">
-          We offer a full range of physiotherapy services tailored to your
-          specific needs, from injury recovery to performance enhancement.
+          <span className="text-blue-500">
+            Physiotherapy & Rehabilitation Services
+          </span>
+        </h2>
+
+        <p className="text-gray-500 p-2 max-w-3xl">
+          RehabCare Clinic offers a full range of professional physiotherapy
+          services designed to relieve pain, restore mobility, and support
+          long-term recovery for patients of all ages.
         </p>
       </div>
 
-      {/* Responsive Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-3">
-        {/* Card 1 */}
-        <div className="bg-neutral-900 border border-neutral-400 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+      {/* SERVICES GRID */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+        {/* Service 1 */}
+        <article className="bg-neutral-900 border border-neutral-400 p-6 rounded-xl shadow-sm hover:shadow-md transition">
           <div className="flex items-center gap-3 mb-3">
             <FaHandHoldingMedical className="text-green-400 text-2xl" />
-            <h3 className="text-xl font-semibold">Manual Therapy</h3>
+            <h3 className="text-xl font-semibold">
+              Manual Therapy & Pain Management
+            </h3>
           </div>
           <p className="text-sm text-neutral-400 mb-4">
-            Hands-on treatment techniques to improve mobility and reduce pain
-            through joint mobilization and soft tissue manipulation.
+            Hands-on physiotherapy techniques to reduce pain, improve joint
+            mobility, and enhance soft tissue function.
           </p>
           <ul className="text-sm text-neutral-300 space-y-1">
             <li>• Joint Mobilization</li>
             <li>• Soft Tissue Release</li>
             <li>• Trigger Point Therapy</li>
           </ul>
-        </div>
+        </article>
 
-        {/* Card 2 */}
-        <div className="bg-neutral-900 border border-neutral-400 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+        {/* Service 2 */}
+        <article className="bg-neutral-900 border border-neutral-400 p-6 rounded-xl shadow-sm hover:shadow-md transition">
           <div className="flex items-center gap-3 mb-3">
             <GiStrong className="text-blue-400 text-2xl" />
-            <h3 className="text-xl font-semibold">Exercise Therapy</h3>
+            <h3 className="text-xl font-semibold">
+              Exercise Therapy & Strength Training
+            </h3>
           </div>
           <p className="text-sm text-neutral-400 mb-4">
-            Customized exercise programs to improve strength, mobility, and
-            restore functional movement.
+            Personalized exercise programs to improve strength, flexibility,
+            posture, and overall functional movement.
           </p>
           <ul className="text-sm text-neutral-300 space-y-1">
             <li>• Strength Training</li>
             <li>• Flexibility Programs</li>
-            <li>• Functional Movement</li>
+            <li>• Functional Movement Training</li>
           </ul>
-        </div>
+        </article>
 
-        {/* Card 3 */}
-        <div className="bg-neutral-900 border border-neutral-400 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+        {/* Service 3 */}
+        <article className="bg-neutral-900 border border-neutral-400 p-6 rounded-xl shadow-sm hover:shadow-md transition">
           <div className="flex items-center gap-3 mb-3">
             <TbDeviceHeartMonitor className="text-teal-400 text-2xl" />
-            <h3 className="text-xl font-semibold">Electrotherapy</h3>
+            <h3 className="text-xl font-semibold">
+              Electrotherapy & Pain Relief
+            </h3>
           </div>
           <p className="text-sm text-neutral-400 mb-4">
-            Advanced electrical stimulation to accelerate healing and reduce
-            pain.
+            Advanced electrotherapy techniques to accelerate healing and
+            effectively manage acute and chronic pain.
           </p>
           <ul className="text-sm text-neutral-300 space-y-1">
             <li>• TENS Therapy</li>
-            <li>• Ultrasound</li>
+            <li>• Ultrasound Therapy</li>
             <li>• Electrical Stimulation</li>
           </ul>
-        </div>
+        </article>
 
-        {/* Card 4 */}
-        <div className="bg-neutral-900 border border-neutral-400 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+        {/* Service 4 */}
+        <article className="bg-neutral-900 border border-neutral-400 p-6 rounded-xl shadow-sm hover:shadow-md transition">
           <div className="flex items-center gap-3 mb-3">
             <FaRunning className="text-cyan-400 text-2xl" />
-            <h3 className="text-xl font-semibold">Sports Rehabilitation</h3>
+            <h3 className="text-xl font-semibold">
+              Sports Injury Rehabilitation
+            </h3>
           </div>
           <p className="text-sm text-neutral-400 mb-4">
-            Specialized treatment for sports injuries and safe return to
-            athletic performance.
+            Specialized physiotherapy care for sports injuries with a focus on
+            safe recovery and return to performance.
           </p>
           <ul className="text-sm text-neutral-300 space-y-1">
             <li>• Injury Prevention</li>
-            <li>• Performance Enhancement</li>
-            <li>• Return to Sport</li>
+            <li>• Performance Rehabilitation</li>
+            <li>• Return-to-Sport Programs</li>
           </ul>
-        </div>
+        </article>
 
-        {/* Card 5 */}
-        <div className="bg-neutral-900 border border-neutral-400 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+        {/* Service 5 */}
+        <article className="bg-neutral-900 border border-neutral-400 p-6 rounded-xl shadow-sm hover:shadow-md transition">
           <div className="flex items-center gap-3 mb-3">
             <FaUsers className="text-green-400 text-2xl" />
-            <h3 className="text-xl font-semibold">Group Classes</h3>
+            <h3 className="text-xl font-semibold">
+              Group Physiotherapy Programs
+            </h3>
           </div>
           <p className="text-sm text-neutral-400 mb-4">
-            Therapeutic group sessions focusing on fitness and mobility goals.
+            Therapeutic group sessions focused on improving mobility, balance,
+            and overall fitness.
           </p>
           <ul className="text-sm text-neutral-300 space-y-1">
-            <li>• Pilates Classes</li>
-            <li>• Balance Training</li>
-            <li>• Arthritis Support</li>
+            <li>• Pilates & Core Training</li>
+            <li>• Balance & Stability Exercises</li>
+            <li>• Arthritis Support Programs</li>
           </ul>
-        </div>
+        </article>
 
-        {/* Card 6 */}
-        <div className="bg-neutral-900 border border-neutral-400 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+        {/* Service 6 */}
+        <article className="bg-neutral-900 border border-neutral-400 p-6 rounded-xl shadow-sm hover:shadow-md transition">
           <div className="flex items-center gap-3 mb-3">
             <MdOutlineHealthAndSafety className="text-blue-400 text-2xl" />
-            <h3 className="text-xl font-semibold">Assessment & Diagnosis</h3>
+            <h3 className="text-xl font-semibold">
+              Physiotherapy Assessment & Diagnosis
+            </h3>
           </div>
           <p className="text-sm text-neutral-400 mb-4">
-            Comprehensive assessments to identify issues and plan treatments.
+            Comprehensive physiotherapy assessments to identify the root cause
+            of pain and create personalized treatment plans.
           </p>
           <ul className="text-sm text-neutral-300 space-y-1">
-            <li>• Movement Analysis</li>
-            <li>• Posture Assessment</li>
-            <li>• Pain Evaluation</li>
+            <li>• Movement & Gait Analysis</li>
+            <li>• Posture Evaluation</li>
+            <li>• Pain & Function Assessment</li>
           </ul>
-        </div>
+        </article>
       </div>
-      <div className=' flex items-center justify-center p-5'>
-        <div className=" border border-green-600 rounded-lg flex flex-col items-center bg-gradient-to-r  from-green-900 via-zinc-800 to-blue-900 ">
-          <h1 className=' font-bold  p-1'>Not sure which service you need?</h1>
-          <p className='p-1 md:p-2 text-gray-500   text-xs'>
-            Our experts will assess your condition and recommend the best
-            treatment plan.
+
+      {/* CTA */}
+      <div className="flex items-center justify-center p-6">
+        <div
+          className="border border-green-600 rounded-lg flex flex-col items-center 
+        bg-gradient-to-r from-green-900 via-zinc-800 to-blue-900 p-4 text-center"
+        >
+          <h3 className="font-bold">
+            Not sure which physiotherapy service you need?
+          </h3>
+          <p className="text-gray-400 text-sm mt-1">
+            Our experienced physiotherapists will assess your condition and
+            recommend the most suitable treatment plan.
           </p>
-          <p className=' text-green-500 font-bold p-1'>Book a free consultation today!</p>
+          <p className="text-green-500 font-bold mt-2">
+            Book a consultation today
+          </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
-export default Service
+export default Service;

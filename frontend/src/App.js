@@ -1,4 +1,3 @@
-
 import "./App.css";
 import Header from "./Components/Header";
 import Navbar from "./Components/Navbar";
@@ -10,24 +9,43 @@ import Contact from "./Pages/Contact";
 import Service from "./Pages/Service";
 import Footer from "./Components/Footer";
 
-
 function App() {
   return (
-    <div>
-      <Header />
-      <Navbar />
-      <div className="pt-[140px]">
-        <Home />
-        <Service />
-        <About />
-        <Team />
+    <>
+      {/* Site Header */}
+      <header>
+        <Header />
+        <Navbar />
+      </header>
 
-        <Contact />
+      {/* Main Content (VERY IMPORTANT FOR SEO) */}
+      <main className="pt-[140px]">
+        <section id="home">
+          <Home />
+        </section>
 
-      </div>
-      <Footer />
-      
-    </div>
+        <section id="services">
+          <Service />
+        </section>
+
+        <section id="about">
+          <About />
+        </section>
+
+        <section id="team">
+          <Team />
+        </section>
+
+        <section id="contact">
+          <Contact />
+        </section>
+      </main>
+
+      {/* Site Footer */}
+      <footer>
+        <Footer />
+      </footer>
+    </>
   );
 }
 

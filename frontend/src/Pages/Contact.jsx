@@ -1,5 +1,5 @@
-import axios from 'axios';
-import React, { useState } from 'react'
+import axios from "axios";
+import React, { useState } from "react";
 import { FaPhoneAlt, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 
@@ -8,20 +8,20 @@ function Contact() {
     name: "",
     email: "",
     phoneNo: "",
-    message:""
-  })
+    message: "",
+  });
 
-  const handleSubmit = async(e) => {
-    e.preventDefault()
-    console.log("first")
-    console.log(data)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("first");
+    console.log(data);
 
     try {
       const res = await axios.post("http://localhost:5000/api/contact", {
         name: data.name,
         email: data.email,
         phoneNo: data.phoneNo,
-        message:data.message
+        message: data.message,
       });
 
       alert("Message sent successfully ✅");
@@ -31,21 +31,19 @@ function Contact() {
         name: "",
         email: "",
         phoneNo: "",
-        message:""
-      })
+        message: "",
+      });
     } catch (error) {
-      console.log(error)
-      alert("Server is not working try after sometime ")
+      console.log(error);
+      alert("Server is not working try after sometime ");
     }
-  }
+  };
 
   const handleChange = (e) => {
     // console.log(e.target)
-    const { name, value } = e.target
-    setData({ ...data, [name]: value })
-    
-    
-  }
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value });
+  };
   return (
     <div id="contact">
       <div className="bg-neutral-900 text-neutral-200 py-16 px-4">
@@ -213,4 +211,4 @@ function Contact() {
   );
 }
 
-export default Contact
+export default Contact;
