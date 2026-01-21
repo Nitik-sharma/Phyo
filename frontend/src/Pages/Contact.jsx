@@ -111,8 +111,8 @@ function Contact() {
                     <FaMapMarkerAlt className="text-green-500 text-lg" />
                     <p className="font-semibold">Address</p>
                   </div>
-                  <p className="text-sm text-neutral-300">123 Health Street</p>
-                  <p className="text-xs text-neutral-500">City, State 12345</p>
+                  <p className="text-sm text-neutral-300">18,Yadav Market,Dhanwapur Road,</p>
+                  <p className="text-xs text-neutral-500">Laxman Vhiar,Gurugram</p>
                 </div>
 
                 {/* Hours */}

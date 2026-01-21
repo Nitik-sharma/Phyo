@@ -39,7 +39,7 @@ export default function Footer() {
                   aria-label="Call RehabCare Physiotherapy Clinic"
                   className="hover:underline"
                 >
-                  (345) 123-4567
+                  9034107746
                 </a>
               </p>
 
@@ -49,13 +49,13 @@ export default function Footer() {
                   href="mailto:info@physioclinic.com"
                   className="hover:underline"
                 >
-                  info@physioclinic.com
+                  prehabcare@gmail.com
                 </a>
               </p>
 
               <p className="flex items-center gap-2">
                 <FaMapMarkerAlt className="text-green-500" />
-                123 Health St, City, State 12345
+                18,Yadav Market,Dhanwapur Road,Laxman Vhiar,Gurugram
               </p>
             </address>
           </div>

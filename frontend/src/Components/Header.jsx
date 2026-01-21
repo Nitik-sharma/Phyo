@@ -14,18 +14,18 @@ function Header() {
           <p className="flex items-center gap-1 justify-center">
             <CiPhone />
             <a
-              href="tel:+15551234567"
+              href="tel:9034107746"
               aria-label="Call RehabCare Physiotherapy Clinic"
               className="hover:underline"
             >
-              (555) 123-4567
+              9034107746
             </a>
           </p>
 
           {/* Address */}
           <address className="not-italic flex items-center gap-1 justify-center">
             <CiLocationOn />
-            <span>123 Health St, City, State 12345</span>
+            <span>18,Yadav Market,Dhanwapur Road,Laxman Vhiar,Gurugram</span>
           </address>
         </div>
 

@@ -35,7 +35,7 @@ function Home() {
           and long-term recovery.
         </p>
 
-        {/* CTA BUTTONS */}
+        {/* CTA BUTTONS
         <div className="flex gap-4 p-5 mt-4 md:p-6">
           <motion.button
             className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded shadow-lg"
@@ -55,7 +55,7 @@ function Home() {
           >
             Learn More
           </motion.button>
-        </div>
+        </div> */}
 
         {/* STATS (NO H1 HERE ❌) */}
         <motion.div
