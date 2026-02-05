@@ -8,17 +8,20 @@ const sendMail = require("../service/email");
 route.post("/book", async (req, res) => {
   try {
 
+    
+    
+    
+    const { patientName, patientEmail, patientPhone, date, slot, notes } = req.body;
     const today = new Date()
     today.setHours(0, 0, 0, 0)
     const selectedDate = new Date(date)
+
     
     if (selectedDate < today) {
       return res.status(400).json({
         message:"Post date appointment is not allowed "
       })
     }
-    
-    const { patientName, patientEmail, patientPhone, date, slot, notes } = req.body;
 
     if (!patientName || !patientEmail || !patientPhone || !slot || !date) {
       return res.status(400).json({ message: "Missing important field" });
@@ -29,7 +32,7 @@ route.post("/book", async (req, res) => {
     const appointment = await Appointment.create({
       patientName,
       patientEmail,
-      phone: patientPhone,
+      phone: patientPhone, 
       slot,
       date,
       notes,
