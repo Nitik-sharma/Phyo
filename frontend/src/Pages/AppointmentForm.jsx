@@ -15,7 +15,7 @@ const AppointmentForm = () => {
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
 
-  const apiUrl = "http://localhost:5000";
+  const apiUrl = "https://phyo-pps7.onrender.com";
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));

@@ -17,12 +17,15 @@ function Contact() {
     console.log(data);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/contact", {
-        name: data.name,
-        email: data.email,
-        phoneNo: data.phoneNo,
-        message: data.message,
-      });
+      const res = await axios.post(
+        "https://phyo-pps7.onrender.com/api/contact",
+        {
+          name: data.name,
+          email: data.email,
+          phoneNo: data.phoneNo,
+          message: data.message,
+        },
+      );
 
       alert("Message sent successfully ✅");
 
