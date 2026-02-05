@@ -9,7 +9,7 @@ const Contactus=require("./routes/Contact")
 const appointment=require("./routes/appointmentsRoute")
 const app = express()
 app.use(cors({
-  origin: "http://localhost:3000",  // React
+  origin: ["http://localhost:3000", process.env.CLIENT_URL], // React
   methods: ["GET","POST"],
   credentials: true
 }));
