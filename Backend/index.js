@@ -34,7 +34,7 @@ app.get("/test-email", async (req, res) => {
 
 
 
-PORT = process.env.PORT || 3000
+PORT = process.env.PORT || 5000
 
 connectDB()
 
