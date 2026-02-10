@@ -9,7 +9,7 @@ const Contactus=require("./routes/Contact")
 const appointment=require("./routes/appointmentsRoute")
 const app = express()
 app.use(cors({
-  origin: ["http://localhost:3000", process.env.CLIENT_URL], // React
+  origin: ["http://localhost:5000", process.env.CLIENT_URL], // React
   methods: ["GET","POST"],
   credentials: true
 }));
@@ -34,7 +34,7 @@ app.get("/test-email", async (req, res) => {
 
 
 
-PORT = process.env.PORT || 5001
+PORT = process.env.PORT || 3000
 
 connectDB()
 
