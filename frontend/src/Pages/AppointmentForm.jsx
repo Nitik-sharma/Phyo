@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import API from "../service/API";
 
 const AppointmentForm = () => {
   const [form, setForm] = useState({
@@ -15,8 +16,7 @@ const AppointmentForm = () => {
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
 
-  const apiUrl = "https://phyo-pps7.onrender.com";
-
+  
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -36,7 +36,7 @@ const AppointmentForm = () => {
     };
 
     try {
-      const res = await axios.post(`${apiUrl}/api/appointments/book`, payload, {
+      const res = await API.post("/appointments/book", payload, {
         headers: { "Content-Type": "application/json" },
       });
 
